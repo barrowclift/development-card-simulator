@@ -2,10 +2,15 @@
 
 ### *The "Settlers of Catan" Development Card deck simulator*
 
-<!-- <img src="https://barrowclift.me/images/projects/development-card-simulator/light-screenshot.png" /> -->
-<!-- <img src="https://barrowclift.me/images/projects/development-card-simulator/dark-screenshot.png" /> -->
-
 This is a small web app to establish a virtual Development Card deck for you and friends or family to use while playing a game of "Settlers of Catan" remotely. It's as simple as can be; only one game can run at any given time for a given instance and anyone with the password you (the admin) set in advance may join.
+
+This light app offers both light...
+
+<picture><source type="image/webp" srcset="https://dropbox.barrowclift.me/assets/projects/code/development-card-simulator/light-screenshot.webp"><img type="image/png" src="https://dropbox.barrowclift.me/assets/projects/code/development-card-simulator/light-screenshot.png" /></picture>
+
+And dark variants (depending on your system's theme)
+
+<picture><source type="image/webp" srcset="https://dropbox.barrowclift.me/assets/projects/code/development-card-simulator/dark-screenshot.webp"><img type="image/png" src="https://dropbox.barrowclift.me/assets/projects/code/development-card-simulator/dark-screenshot.png" /></picture>
 
 ## Setup
 
@@ -49,5 +54,3 @@ The provided name on login is used to uniquely identify players, so if you wish 
 * It allows users to drop off (loss of internet connection, phone dies, etc.) while still allowing them to easily hop back on to regain their hand. This can also be achieved with individual "real" accounts, but is far too complex for something this simple.
 * Hopping onto a current game is trivial and quick: all you need to do is provide a unique name and the simulator's password, that's it. No account creation required.
 * Nobody I play a game with shares a name with anyone else, so it was a personal non-issue.
-
-You can download the latest release [here](https://github.com/barrowclift/shelf/releases/tag/v2.1.1)
