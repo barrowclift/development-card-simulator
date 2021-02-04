@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en-US" prefix="og: http://ogp.me/ns#">
+
+    {% include "head" %}
+
+    <body>
+        <div id="app" class="flex-center">
+            <div v-if="player" class="container-wider">
+                <div class="flex-left flex-wrap units-gap-big">
+                    <div class="unit-1-4 unit-1-on-mobile">
+                        <h2 id="sidebar">Players</h2>
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>In Hand</th>
+                                    <th>Played</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr v-for="player in activePlayers"
+                                    :key="player.id">
+                                    <td>${ player.name }</td>
+                                    <td>${ player.numOfCards }</td>
+                                    <td><ul>
+                                        <li v-for="playedCard in player.played">${ playedCard.title } <mark v-if="playedCard.isVp">1 VP</mark></li>
+                                    </ul></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <input type="button" class="btn btn-danger" value="End Game" v-on:click="endGame"/>
+                    </div>
+                    <div class="unit-3-4 unit-1-on-mobile">
+                        <h1 id="container-wider-with-sidebar">
+                            <picture>
+                                <source type="image/webp" srcset="/images/shield.webp">
+                                <img type="image/png" src="/images/shield.png">
+                            </picture>
+                            {{ siteTitle }}
+                        </h1>
+                        <p><code>${ numInDeck }</code> cards in deck</p>
+                        <input type="button" class="btn btn-primary" :value="drawButtonLabel" v-on:click="draw" :disabled="numInDeck === 0 && numInDiscard === 0"/>
+                        <div style="margin-top:1em;">
+                            <transition-group name="zoom">
+                                <div v-for="card in hand" :key="card.key" class="card">
+                                    <picture>
+                                        <source type="image/webp" :srcset="`/images/${card.image}.webp`">
+                                        <img type="image/jpeg" :title="card.title" :alt="card.description" :src="`/images/${card.image}.jpg`">
+                                    </picture>
+                                    <input type="button" :value="getCardLabel(card)" :class="['btn', card.isVp ? 'btn-danger' : 'btn-primary']" v-on:click="play(card)">
+                                </div>
+                            </transition-group>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div v-else class="container" style="max-width: 34rem;">
+                <div class="logo flex-center">
+                    <picture>
+                        <source type="image/webp" srcset="/images/shield.webp">
+                        <img type="image/png" src="/images/shield.png">
+                    </picture>
+                </div>
+                <h1 class="flex-center" style="margin-top:1rem;margin-bottom:1em;text-align:center;">{{ siteTitle }}</h1>
+
+                <div v-if="loading" id="loading-spinner">
+                    <div class="progress-text">
+                        <div class="spinner"></div>
+                    </div>
+                </div>
+                <div v-else>
+                    <p v-if="error" class="text-danger">${ error }</p>
+                    <p v-if="message" class="text-muted">${ message }</p>
+                    <form class="form" v-on:submit.prevent="onSubmit">
+                        <input type="text" placeholder="Name" v-model="name"/>
+                        <input type="password" placeholder="Password" v-model="password"/>
+                        <input class="btn btn-primary" type="submit" :value="activePlayers.length == 0 ? 'Start New Game' : 'Join Current Game'"/>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </body>
+
+    {% include "footerScripts" %}
+
+    <script type="text/javascript">
+        let app = new Vue({
+            el: "#app",
+            delimiters: ["${", "}"],
+            data: {
+                password: "",
+                name: "",
+                error: "",
+                message: "",
+                drawButtonLabel: "Draw",
+                player: null,
+                loading: false,
+                numInDeck: 0,
+                numInDiscard: 0,
+                activePlayers: [],
+                hand: []
+            },
+            methods: {
+                onSubmit: function (event) {
+                    socket.emit("{{ login }}", { name: this.name, password: this.password });
+                    this.loading = true;
+                },
+                draw: function (event) {
+                    socket.emit("{{ draw }}", { id: this.player.id });
+                },
+                play: function (card) {
+                    socket.emit("{{ play }}", { card: card, id: this.player.id });
+                },
+                endGame: function() {
+                    var response = confirm("Are you sure you want to end the current game?");
+                    if (response) {
+                        socket.emit("{{ endGame }}", { id: this.player.id }); 
+                    }
+                },
+                getCardLabel: function(card) {
+                    return card.isVp ? "Play At End" : "Play";
+                }
+            }
+        });
+
+        let socket = io.connect();
+        socket.on("connect", () => {
+            socket.on("{{ login }}", function(error) {
+                app.loading = false;
+                app.password = "";
+                app.message = "";
+                app.error = error;
+            });
+            socket.on("authorized", function(thePlayer) {
+                app.password = "";
+                app.player = thePlayer;
+                socket.emit("{{ publicState }}", app.player.id);
+                socket.emit("{{ hand }}", app.player.id);
+            });
+            socket.on("{{ publicState }}", function(state) {
+                app.activePlayers = state.activePlayers;
+                app.numInDeck = state.numInDeck;
+                if (state.numInDeck === 0) {
+                    app.drawButtonLabel = "Deck is Empty";
+                } else {
+                    app.drawButtonLabel = "Draw";
+                }
+            });
+            socket.on("{{ hand }}", function(hand) {
+                app.hand = hand;
+            });
+            socket.on("{{ endGame }}", function() {
+                app.password = "";
+                app.player = null;
+                app.hand = [];
+                app.activePlayers = [];
+                app.message = "Hope you had a good time playing!";
+                app.loading = false;
+                app.error = "";
+            });
+        })
+    </script>
+</html>

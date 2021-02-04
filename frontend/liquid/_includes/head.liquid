@@ -1,0 +1,42 @@
+<head>
+    <title>{{ siteTitle }}</title>
+    <meta name="description" content="The Barrowclift family virtual 'Settlers of Catan' Development Card Deck">
+
+    <link rel="mask-icon" href="/pinned-tab.svg" color="#A11833" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.jpg" />
+
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Facebook / Open Graph -->
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Catan" />
+    <meta property="og:description" content="The Barrowclift family virtual 'Settlers of Catan' Development Card Deck" />
+    <meta property="og:url" content="{{ siteUrl }}" />
+    <meta property="og:image" content="{{ siteUrl }}/share-banner.jpg"/>
+    <meta property="og:site_name" content="Catan" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    {% if twitterHandle %}
+    <meta name="twitter:site" content="{{ twitterHandle }}" />
+    {% endif %}
+    <meta name="twitter:title" content="Catan" />
+    <meta name="twitter:description" content="The Barrowclift family virtual 'Settlers of Catan' Development Card Deck" />
+    <meta name="twitter:image" content="{{ siteUrl }}/share-banner.jpg" />
+    <meta name="twitter:url" content="{{ siteUrl }}" />
+
+    <link rel="stylesheet" href="/css/reset.min.css">
+    <!-- <link rel="stylesheet" href="https://unpkg.com/mobi.css/dist/mobi.min.css" /> -->
+    <link rel="stylesheet" href="/css/mobi.min.css" />
+    <link rel="stylesheet" href="/css/style.min.css" />
+
+    <!-- Development version, includes helpful console warnings -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script> -->
+    <!-- Production version -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.min.js"></script> -->
+    <script src="/scripts/vue.min.js"></script>
+</head>

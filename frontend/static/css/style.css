@@ -1,0 +1,220 @@
+@media (prefers-color-scheme: dark) {
+    body {
+        background-color: #242424;
+        color: #F6F6F6;
+    }
+    .form [type=email], .form [type=number], .form [type=password], .form [type=search], .form [type=tel], .form [type=text], .form [type=url], .form select, .form textarea,
+    code, kbd, samp {
+        background-color: rgba(0, 0, 0, 0.375);
+        border: 1px solid rgba(0, 0, 0, 0.5);
+        color: #F6F6F6;
+    }
+    .table th {
+        background-color: rgba(0, 0, 0, 0.375);
+        border-color: rgba(0, 0, 0, 0.75);
+    }
+    .btn:active:not(.btn-primary):not(.btn-danger),
+    .btn:hover:not(.btn-primary):not(.btn-danger) {
+        background-color: rgba(255, 255, 255, 0.925);
+    }
+    .btn:not(.btn-primary):not(.btn-danger) {
+        background-color: rgba(255, 255, 255, 0.875);
+        border: 1px solid #ddd;
+    }
+    .table {
+        background-color: transparent;
+    }
+    .table td {
+        border-color: rgba(0, 0, 0, 0.75);
+    }
+}
+
+.card {
+    margin: 0.45em;
+    display: inline-block;
+    max-width: 45%;
+}
+.card input {
+    width: 100%;
+    margin-bottom: 1em;
+    text-align: center;
+    margin-top: 0.25em;
+}
+
+@-webkit-keyframes zoomIn {
+    from {
+        opacity: 0;
+        -webkit-transform: scale3d(0.3, 0.3, 0.3);
+        transform: scale3d(0.3, 0.3, 0.3);
+    }
+    50% {
+        opacity: 1;
+    }
+}
+@keyframes zoomIn {
+    from {
+        opacity: 0;
+        -webkit-transform: scale3d(0.3, 0.3, 0.3);
+        transform: scale3d(0.3, 0.3, 0.3);
+    }
+    50% {
+        opacity: 1;
+    }
+}
+@-webkit-keyframes zoomOut {
+    from {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0;
+        -webkit-transform: scale3d(0.3, 0.3, 0.3);
+        transform: scale3d(0.3, 0.3, 0.3);
+    }
+    to {
+        opacity: 0;
+    }
+}
+@keyframes zoomOut {
+    from {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0;
+        -webkit-transform: scale3d(0.3, 0.3, 0.3);
+        transform: scale3d(0.3, 0.3, 0.3);
+    }
+    to {
+        opacity: 0;
+    }
+}
+.zoom-enter-active {
+    animation: zoomIn .5s;
+}
+.zoom-leave-active,
+.zoom-leave-to {
+    animation: zoomOut .5s;
+}
+.zoom-leave-active {
+    position: absolute;
+}
+.zoom-move {
+    transition: transform 0.5s;
+}
+
+h1 img {
+    margin-right: 0.1rem;
+    height: 0.8em;
+    vertical-align: baseline;
+}
+
+.logo {
+    margin-top: 2em;
+}
+.logo picture {
+    width: 25%;
+    text-align: center;
+}
+
+@media (min-width: 510px) {
+    .card {
+        margin: 0.5em;
+        max-width: 30%;
+    }
+}
+
+.btn {
+    transition: background-color 0.2s cubic-bezier(0.28, 0.11, 0.32, 0);
+}
+input {
+    transition: border-color 0.1s cubic-bezier(0.28, 0.11, 0.32, 0);
+}
+
+table ul {
+    padding-left: 0;
+    list-style: circle;
+    margin-top: 0;
+}
+
+mark {
+    padding: 0 .375em;
+    border-radius: 1em;
+    background-color: #F3CC2B;
+}
+
+@keyframes loading {
+    0% {
+        transform: rotate(0)
+    }
+    100% {
+        transform: rotate(360deg)
+    }
+}
+@keyframes colors {
+    0% {
+        border-left-color: #3A4147;
+        border-bottom-color: #3A4147;
+    }
+    12.5% {
+        border-left-color: #E23636;
+        border-bottom-color: #E23636;
+    }
+    25% {
+        border-left-color: #ED5B0A;
+        border-bottom-color: #ED5B0A;
+    }
+    37.5% {
+        border-left-color: #F19100;
+        border-bottom-color: #F19100;
+    }
+    50% {
+        border-left-color: #2EA248;
+        border-bottom-color: #2EA248;
+    }
+    62.5% {
+        border-left-color: #1474C4;
+        border-bottom-color: #1474C4;
+    }
+    75% {
+        border-left-color: #3D5FE0;
+        border-bottom-color: #3D5FE0;
+    }
+    87.5% {
+        border-left-color: #A33CBC;
+        border-bottom-color: #A33CBC;
+    }
+    100% {
+        border-left-color: #3A4147;
+        border-bottom-color: #3A4147;
+    }
+}
+#loading-spinner {
+    width: 100%;
+    z-index: -100;
+}
+.spinner {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 1rem;
+    color: transparent !important;
+    min-height: 4rem;
+    pointer-events: none;
+    position: relative;
+}
+    .spinner:after {
+        animation: loading .5s infinite linear,
+                   colors 4s ease-in-out infinite;
+        border: .25em solid #868E96;
+        border-radius: 50%;
+        border-right-color: transparent;
+        border-top-color: transparent;
+        content: "";
+        display: block;
+        height: 2em;
+        left: 50%;
+        margin-left: -1em;
+        margin-top: -1em;
+        position: absolute;
+        top: 50%;
+        width: 2em;
+        z-index: 1;
+    }

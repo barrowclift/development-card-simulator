@@ -1,0 +1,23 @@
+{
+  "name": "development-card-simulator",
+  "version": "1.0.0",
+  "description": "The 'Settlers of Catan' Development Card deck simulator",
+  "main": "admin/main.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/barrowclift/development-card-simulator.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Marc Barrowclift",
+  "license": "MIT",
+  "dependencies": {
+    "compression": "^1.7.4",
+    "express": "^4.17.1",
+    "liquidjs": "^9.20.1",
+    "path": "^0.12.7",
+    "properties": "^1.2.1",
+    "socket.io": "^3.1.0"
+  }
+}
