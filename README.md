@@ -4,11 +4,11 @@
 
 This is a small web app to establish a virtual Development Card deck for you and friends or family to use while playing a game of "Settlers of Catan" remotely. It's as simple as can be; only one game can run at any given time for a given instance and anyone with the password you (the admin) set in advance may join.
 
-This light app offers both light...
+This light app supports both light...
 
 <picture><source type="image/webp" srcset="https://dropbox.barrowclift.me/assets/projects/code/development-card-simulator/light-screenshot.webp"><img type="image/png" src="https://dropbox.barrowclift.me/assets/projects/code/development-card-simulator/light-screenshot.png" /></picture>
 
-And dark variants (depending on your system's theme)
+And dark mode (controlled by your system's theme)
 
 <picture><source type="image/webp" srcset="https://dropbox.barrowclift.me/assets/projects/code/development-card-simulator/dark-screenshot.webp"><img type="image/png" src="https://dropbox.barrowclift.me/assets/projects/code/development-card-simulator/dark-screenshot.png" /></picture>
 
