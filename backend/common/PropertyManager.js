@@ -3,10 +3,10 @@
 // DEPENDENCIES
 // ------------
 // External
-let nodePropertyLoader = require("properties");
+import nodePropertyLoader from "properties";
 // Local
-let Logger = require("./Logger");
-let util = require("./util");
+import Logger from "./Logger.js";
+import util from "./util.js";
 
 
 // CONSTANTS
@@ -38,7 +38,7 @@ let log = new Logger(CLASS_NAME);
  * calling code get back to what's *actually* important to them: their own
  * work.
  */
-class PropertyManager {
+export default class PropertyManager {
 
     /**
      * Does not automatically load any properties file, but simply initializes
@@ -125,5 +125,3 @@ class PropertyManager {
     }
 
 }
-
-module.exports = PropertyManager;

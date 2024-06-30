@@ -84,44 +84,47 @@
     {% include "footerScripts" %}
 
     <script type="text/javascript">
-        let app = new Vue({
-            el: "#app",
+        const { createApp } = Vue;
+
+        let app = createApp({
             delimiters: ["${", "}"],
-            data: {
-                password: "",
-                name: "",
-                error: "",
-                message: "",
-                drawButtonLabel: "Draw",
-                player: null,
-                loading: false,
-                numInDeck: 0,
-                numInDiscard: 0,
-                activePlayers: [],
-                hand: []
+            data() {
+                return {
+                    password: "",
+                    name: "",
+                    error: "",
+                    message: "",
+                    drawButtonLabel: "Draw",
+                    player: null,
+                    loading: false,
+                    numInDeck: 0,
+                    numInDiscard: 0,
+                    activePlayers: [],
+                    hand: []
+                }
             },
             methods: {
-                onSubmit: function (event) {
+                onSubmit(event) {
                     socket.emit("{{ login }}", { name: this.name, password: this.password });
                     this.loading = true;
                 },
-                draw: function (event) {
+                draw(event) {
                     socket.emit("{{ draw }}", { id: this.player.id });
                 },
-                play: function (card) {
+                play(card) {
                     socket.emit("{{ play }}", { card: card, id: this.player.id });
                 },
-                endGame: function() {
+                endGame() {
                     var response = confirm("Are you sure you want to end the current game?");
                     if (response) {
                         socket.emit("{{ endGame }}", { id: this.player.id }); 
                     }
                 },
-                getCardLabel: function(card) {
+                getCardLabel(card) {
                     return card.isVp ? "Play At End" : "Play";
                 }
             }
-        });
+        }).mount("#app");
 
         let socket = io.connect();
         socket.on("connect", () => {

@@ -6,19 +6,18 @@ This is a small web app to establish a virtual Development Card deck for you and
 
 This light app supports both light...
 
-<picture><source type="image/webp" srcset="https://dropbox.barrowclift.me/assets/projects/code/development-card-simulator/light-screenshot.webp"><img type="image/png" src="https://dropbox.barrowclift.me/assets/projects/code/development-card-simulator/light-screenshot.png" /></picture>
+<picture><source type="image/webp" srcset="https://cargo.barrowclift.me/projects/code/development-card-simulator/light-screenshot.webp"><img type="image/png" src="https://cargo.barrowclift.me/projects/code/development-card-simulator/light-screenshot.png" /></picture>
 
 And dark mode (controlled by your system's theme)
 
-<picture><source type="image/webp" srcset="https://dropbox.barrowclift.me/assets/projects/code/development-card-simulator/dark-screenshot.webp"><img type="image/png" src="https://dropbox.barrowclift.me/assets/projects/code/development-card-simulator/dark-screenshot.png" /></picture>
+<picture><source type="image/webp" srcset="https://cargo.barrowclift.me/projects/code/development-card-simulator/dark-screenshot.webp"><img type="image/png" src="https://cargo.barrowclift.me/projects/code/development-card-simulator/dark-screenshot.png" /></picture>
 
 ## Setup
 
 ### Dependencies
 
 * A VM or local computer to act as your server
-* A modern version of [Node](https://nodejs.org/en/) (14.15.4 or later)
-* A modern version of [npm](https://www.npmjs.com/get-npm) (7.4.3 or later)
+* A modern version of [Node](https://nodejs.org/en/) (v22 or later)
 
 ### Required Configuration
 

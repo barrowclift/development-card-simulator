@@ -5,8 +5,8 @@
 // External
 
 // Local
-let Logger = require("./common/Logger");
-let util = require("./common/util");
+import Logger from "./common/Logger.js";
+import util from "./common/util.js";
 
 
 // CONSTANTS
@@ -19,7 +19,7 @@ const CLASS_NAME = "Player";
 let log = new Logger(CLASS_NAME);
 
 
-class Player {
+export default class Player {
 
     constructor() {
         this.hand = [];
@@ -43,5 +43,3 @@ class Player {
     }
 
 }
-
-module.exports = Player;

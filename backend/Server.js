@@ -3,18 +3,18 @@
 // DEPENDENCIES
 // ------------
 // External
-let express = require("express");
-let path = require("path");
-let socketIo = require("socket.io");
-let { Liquid } = require("liquidjs");
-let compression = require("compression");
+import compression from "compression";
+import express from "express";
+import path from "path";
+import { Liquid } from "liquidjs";
+import { Server as SocketIo } from "socket.io";
 // Local
-let Logger = require("./common/Logger");
-let paths = require("./common/paths");
-let socketCodes = require("./common/socketCodes");
-let util = require("./common/util");
-let Deck = require("./Deck");
-let Player = require("./Player");
+import Logger from "./common/Logger.js";
+import paths from "./common/paths.js";
+import socketCodes from "./common/socketCodes.js";
+import util from "./common/util.js";
+import Deck from "./Deck.js";
+import Player from "./Player.js";
 
 
 // CONSTANTS
@@ -27,7 +27,7 @@ const CLASS_NAME = "Server";
 let log = new Logger(CLASS_NAME);
 
 
-class Server {
+export default class Server {
 
     constructor(propertyManager) {
         this.propertyManager = propertyManager;
@@ -88,7 +88,7 @@ class Server {
                 credentials: true
             }
         }
-        this.frontendIo = socketIo(this.frontendServer, frontendOptions);
+        this.frontendIo = new SocketIo(this.frontendServer, frontendOptions);
         this.frontendIo.sockets.on("connection", (socket) => {
             log.debug("New client connected established with socket.io");
 
@@ -196,5 +196,3 @@ class Server {
     }
 
 }
-
-module.exports = Server;

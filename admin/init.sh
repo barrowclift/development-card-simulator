@@ -11,4 +11,4 @@ export FRONTEND_LIQUID_DIR="${REPO}"/frontend/liquid
 export BACKEND_DIR="${REPO}"/backend
 export LOGS_DIR="${REPO}"/logs
 
-export USE_PM2=true
+export USE_PM2=false

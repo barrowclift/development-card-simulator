@@ -1,8 +1,17 @@
 "use strict";
 
-exports.PUBLIC_STATE = "publicState";
-exports.HAND = "hand";
-exports.DRAW = "draw";
-exports.PLAY = "play";
-exports.END_GAME = "endGame";
-exports.LOGIN = "login";
+const PUBLIC_STATE = "publicState";
+const HAND = "hand";
+const DRAW = "draw";
+const PLAY = "play";
+const END_GAME = "endGame";
+const LOGIN = "login";
+
+export default {
+	PUBLIC_STATE,
+	HAND,
+	DRAW,
+	PLAY,
+	END_GAME,
+	LOGIN
+}

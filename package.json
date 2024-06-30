@@ -1,6 +1,7 @@
 {
   "name": "development-card-simulator",
-  "version": "1.0.0",
+  "version": "1.1.0",
+  "type": "module",
   "description": "The 'Settlers of Catan' Development Card deck simulator",
   "main": "admin/main.js",
   "repository": {
@@ -14,10 +15,10 @@
   "license": "MIT",
   "dependencies": {
     "compression": "^1.7.4",
-    "express": "^4.17.1",
-    "liquidjs": "^9.20.1",
+    "express": "^4.19.2",
+    "liquidjs": "^10.14.0",
     "path": "^0.12.7",
     "properties": "^1.2.1",
-    "socket.io": "^3.1.0"
+    "socket.io": "^4.7.5"
   }
 }

@@ -5,7 +5,7 @@
 // External
 
 // Local
-let Logger = require("./common/Logger");
+import Logger from "./common/Logger.js";
 
 
 // CONSTANTS
@@ -79,7 +79,7 @@ const CARDS = {
     }
 }
 
-class Deck {
+export default class Deck {
 
     constructor() {
         this.reset();
@@ -143,5 +143,3 @@ class Deck {
     }
 
 }
-
-module.exports = Deck;

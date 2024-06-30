@@ -3,12 +3,12 @@
 // DEPENDENCIES
 // ------------
 // External
-let path = require("path");
+import path from "path";
 // Local
-let Logger = require("../backend/common/Logger");
-let paths = require("../backend/common/paths");
-let Server = require("../backend/Server");
-let PropertyManager = require("../backend/common/PropertyManager");
+import Logger from "../backend/common/Logger.js";
+import paths from "../backend/common/paths.js";
+import Server from "../backend/Server.js";
+import PropertyManager from "../backend/common/PropertyManager.js";
 
 
 // CONSTANTS
